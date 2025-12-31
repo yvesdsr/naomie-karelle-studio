@@ -1,13 +1,25 @@
 import { useEffect, useRef, useState } from "react";
-import { Play, Video, Sparkles, Building2 } from "lucide-react";
+import { Video, Sparkles, Building2, Camera } from "lucide-react";
 
 import hotelVaisseauVideo from "@/assets/videos/hotel-vaisseau.mp4";
 import chapchapVideo from "@/assets/videos/chapchap-express.mp4";
 import yangoVideo from "@/assets/videos/yango-goya.mp4";
 import celikVideo1 from "@/assets/videos/celik-hotel-1.mp4";
 import celikVideo2 from "@/assets/videos/celik-hotel-2.mp4";
+import michaelKre1 from "@/assets/photos/michael-kre-1.jpeg";
+import michaelKre2 from "@/assets/photos/michael-kre-2.jpeg";
 
-const projects = [
+type Project = {
+  id: number;
+  client: string;
+  category: string;
+  services: string[];
+  description: string;
+  videos?: string[];
+  photos?: string[];
+};
+
+const projects: Project[] = [
   {
     id: 1,
     client: "Hôtel Le Vaisseau",
@@ -39,6 +51,14 @@ const projects = [
     services: ["Création de contenu", "Montage vidéo", "Publicité"],
     description: "Série de vidéos immersives pour valoriser l'expérience client et les installations de l'hôtel.",
     videos: [celikVideo1, celikVideo2],
+  },
+  {
+    id: 5,
+    client: "Michael Kre Photographer",
+    category: "Photographie",
+    services: ["Modèle photo", "Shooting professionnel"],
+    description: "Collaboration en tant que modèle photo pour une séance portrait professionnelle en studio.",
+    photos: [michaelKre1, michaelKre2],
   },
 ];
 
@@ -121,28 +141,52 @@ const Projects = () => {
               </p>
 
               {/* Videos Grid */}
-              <div className={`grid gap-4 ${project.videos.length > 1 ? 'md:grid-cols-2' : 'md:grid-cols-1 max-w-md mx-auto'}`}>
-                {project.videos.map((video, vidIndex) => (
-                  <div 
-                    key={vidIndex}
-                    className="relative group rounded-xl overflow-hidden bg-foreground/5 aspect-[9/16] max-h-[500px]"
-                  >
-                    <video
-                      src={video}
-                      className="w-full h-full object-cover"
-                      controls
-                      preload="metadata"
-                      playsInline
+              {project.videos && project.videos.length > 0 && (
+                <div className={`grid gap-4 ${project.videos.length > 1 ? 'md:grid-cols-2' : 'md:grid-cols-1 max-w-md mx-auto'}`}>
+                  {project.videos.map((video, vidIndex) => (
+                    <div 
+                      key={vidIndex}
+                      className="relative group rounded-xl overflow-hidden bg-foreground/5 aspect-[9/16] max-h-[500px]"
                     >
-                      Votre navigateur ne supporte pas la lecture de vidéos.
-                    </video>
-                    <div className="absolute top-3 left-3 flex items-center gap-2 bg-background/80 backdrop-blur-sm px-3 py-1.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-                      <Video className="w-4 h-4 text-primary" />
-                      <span className="text-xs font-medium text-foreground">Vidéo {vidIndex + 1}</span>
+                      <video
+                        src={video}
+                        className="w-full h-full object-cover"
+                        controls
+                        preload="metadata"
+                        playsInline
+                      >
+                        Votre navigateur ne supporte pas la lecture de vidéos.
+                      </video>
+                      <div className="absolute top-3 left-3 flex items-center gap-2 bg-background/80 backdrop-blur-sm px-3 py-1.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                        <Video className="w-4 h-4 text-primary" />
+                        <span className="text-xs font-medium text-foreground">Vidéo {vidIndex + 1}</span>
+                      </div>
                     </div>
-                  </div>
-                ))}
-              </div>
+                  ))}
+                </div>
+              )}
+
+              {/* Photos Grid */}
+              {project.photos && project.photos.length > 0 && (
+                <div className={`grid gap-4 ${project.photos.length > 1 ? 'md:grid-cols-2' : 'md:grid-cols-1 max-w-md mx-auto'}`}>
+                  {project.photos.map((photo, photoIndex) => (
+                    <div 
+                      key={photoIndex}
+                      className="relative group rounded-xl overflow-hidden bg-foreground/5"
+                    >
+                      <img
+                        src={photo}
+                        alt={`${project.client} - Photo ${photoIndex + 1}`}
+                        className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                      <div className="absolute top-3 left-3 flex items-center gap-2 bg-background/80 backdrop-blur-sm px-3 py-1.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
+                        <Camera className="w-4 h-4 text-primary" />
+                        <span className="text-xs font-medium text-foreground">Photo {photoIndex + 1}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           ))}
         </div>
