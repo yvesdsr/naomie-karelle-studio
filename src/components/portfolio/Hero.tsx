@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import naomiePhoto from "@/assets/naomie-profile.jpeg";
 
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -15,20 +16,22 @@ const Hero = () => {
       <div className="absolute top-1/3 right-1/4 w-24 h-24 rounded-full bg-rose-gold/20 blur-2xl animate-float" />
       
       <div className="container-narrow text-center px-6 py-20">
-        {/* Photo frame placeholder */}
+        {/* Photo frame */}
         <div 
           className={`mx-auto mb-10 w-48 h-48 md:w-64 md:h-64 photo-frame transition-all duration-1000 ${
             isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'
           }`}
         >
-          <div className="w-full h-full bg-gradient-to-br from-accent/40 to-nude flex items-center justify-center">
-            <span className="text-muted-foreground text-sm font-medium">Photo de Naomie</span>
-          </div>
+          <img 
+            src={naomiePhoto} 
+            alt="Naomie Karelle Agnissan" 
+            className="w-full h-full object-cover object-top"
+          />
         </div>
 
         {/* Professional title */}
         <p 
-          className={`text-sm md:text-base tracking-[0.2em] uppercase text-muted-foreground mb-4 font-medium transition-all duration-700 delay-200 ${
+          className={`text-sm md:text-base tracking-[0.2em] uppercase text-muted-foreground mb-4 font-bold transition-all duration-700 delay-200 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
           }`}
         >
