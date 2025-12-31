@@ -1,5 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import { Eye, Users, Heart, MessageCircle, Share2, Clock, Diamond, Gift } from "lucide-react";
+import stats1 from "@/assets/stats-1.jpeg";
+import stats2 from "@/assets/stats-2.jpeg";
+import stats3 from "@/assets/stats-3.jpeg";
+import stats4 from "@/assets/stats-4.jpeg";
 
 const tiktokWeekStats = [
   { label: "Vues", value: "116K", change: "+29%", icon: Eye },
@@ -165,22 +169,26 @@ const Performance = () => {
           </div>
         </div>
 
-        {/* Placeholder pour les preuves */}
+        {/* Preuves statistiques */}
         <div 
-          className={`card-warm max-w-3xl mx-auto text-center transition-all duration-700 delay-500 ${
+          className={`max-w-5xl mx-auto transition-all duration-700 delay-500 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
-          <p className="text-muted-foreground mb-4">
-            📊 Espace réservé pour les captures d'écran des statistiques
-          </p>
-          <div className="grid gap-4 md:grid-cols-3">
-            {[1, 2, 3].map((i) => (
+          <h3 className="font-serif text-xl md:text-2xl text-foreground mb-6 text-center">
+            Captures statistiques
+          </h3>
+          <div className="grid gap-4 grid-cols-2 md:grid-cols-4">
+            {[stats1, stats2, stats3, stats4].map((stat, i) => (
               <div 
                 key={i}
-                className="aspect-video bg-secondary rounded-lg flex items-center justify-center border-2 border-dashed border-border"
+                className="rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
               >
-                <span className="text-sm text-muted-foreground">Image {i}</span>
+                <img 
+                  src={stat} 
+                  alt={`Statistiques TikTok ${i + 1}`} 
+                  className="w-full h-auto object-cover"
+                />
               </div>
             ))}
           </div>

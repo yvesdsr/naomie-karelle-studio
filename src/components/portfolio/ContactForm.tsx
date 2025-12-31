@@ -67,7 +67,7 @@ const ContactForm = () => {
           }`}
         >
           <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-foreground mb-4 text-center">
-            👉 Restons en contact
+            Restons en contact
           </h2>
           <div className="w-16 h-1 bg-accent mx-auto mb-6 rounded-full" />
           <p className="text-center text-muted-foreground mb-12 max-w-xl mx-auto">
