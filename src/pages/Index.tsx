@@ -8,6 +8,7 @@ import Skills from "@/components/portfolio/Skills";
 import Languages from "@/components/portfolio/Languages";
 import Education from "@/components/portfolio/Education";
 import Experience from "@/components/portfolio/Experience";
+import Projects from "@/components/portfolio/Projects";
 import Performance from "@/components/portfolio/Performance";
 import ContactForm from "@/components/portfolio/ContactForm";
 import Footer from "@/components/portfolio/Footer";
@@ -45,6 +46,7 @@ const Index = () => {
           <Languages />
           <Education />
           <Experience />
+          <Projects />
           <Performance />
           <ContactForm />
         </main>
