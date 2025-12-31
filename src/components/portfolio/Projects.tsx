@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState } from "react";
-import { Video, Sparkles, Building2, Camera } from "lucide-react";
+import { Video, Sparkles, Building2, Camera, GraduationCap } from "lucide-react";
 
 import hotelVaisseauVideo from "@/assets/videos/hotel-vaisseau.mp4";
 import chapchapVideo from "@/assets/videos/chapchap-express.mp4";
 import yangoVideo from "@/assets/videos/yango-goya.mp4";
 import celikVideo1 from "@/assets/videos/celik-hotel-1.mp4";
 import celikVideo2 from "@/assets/videos/celik-hotel-2.mp4";
+import formationItcVideo from "@/assets/videos/formation-itc.mp4";
 import michaelKre1 from "@/assets/photos/michael-kre-1.jpeg";
 import michaelKre2 from "@/assets/photos/michael-kre-2.jpeg";
 
@@ -17,6 +18,7 @@ type Project = {
   description: string;
   videos?: string[];
   photos?: string[];
+  icon?: "building" | "camera" | "graduation";
 };
 
 const projects: Project[] = [
@@ -54,11 +56,21 @@ const projects: Project[] = [
   },
   {
     id: 5,
+    client: "Ivoire Trade Center",
+    category: "Formation",
+    services: ["Formation", "Création de contenu"],
+    description: "Animation d'une session de formation en création de contenus pour les réseaux sociaux au prestigieux Ivoire Trade Center.",
+    videos: [formationItcVideo],
+    icon: "graduation",
+  },
+  {
+    id: 6,
     client: "Michael Kre Photographer",
     category: "Photographie",
     services: ["Modèle photo", "Shooting professionnel"],
     description: "Collaboration en tant que modèle photo pour une séance portrait professionnelle en studio.",
     photos: [michaelKre1, michaelKre2],
+    icon: "camera",
   },
 ];
 
@@ -113,7 +125,13 @@ const Projects = () => {
               <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
                 <div className="flex items-start gap-4">
                   <div className="flex-shrink-0 w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center">
-                    <Building2 className="w-6 h-6 text-primary" />
+                    {project.icon === "graduation" ? (
+                      <GraduationCap className="w-6 h-6 text-primary" />
+                    ) : project.icon === "camera" ? (
+                      <Camera className="w-6 h-6 text-primary" />
+                    ) : (
+                      <Building2 className="w-6 h-6 text-primary" />
+                    )}
                   </div>
                   <div>
                     <h3 className="font-serif text-xl md:text-2xl text-foreground font-semibold">
