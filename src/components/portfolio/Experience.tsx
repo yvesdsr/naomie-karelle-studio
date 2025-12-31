@@ -20,6 +20,12 @@ const experiences = [
     period: "Octobre 2024 → Août 2025",
     description: "Création de contenus authentiques et engageants pour la marque.",
   },
+  {
+    title: "Égérie de marque",
+    company: "Nanon Cosmétique",
+    period: "Juillet 2024 → Septembre 2024",
+    description: "Ambassadrice et visage de la marque de cosmétiques.",
+  },
 ];
 
 const Experience = () => {
